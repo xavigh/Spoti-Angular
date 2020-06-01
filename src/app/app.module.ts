@@ -14,8 +14,10 @@ import { CardsComponent } from './components/cards/cards.component';
 //import Routes
 import { ROUTES } from "./app.routes";
 
+
 //Pipes
 import { NoimagePipe } from './pipes/noimage.pipe';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 
 @NgModule({
@@ -27,12 +29,14 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     NavbarComponent,
     NoimagePipe,
     CardsComponent,
+    LoadingComponent,
   ],
 
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
