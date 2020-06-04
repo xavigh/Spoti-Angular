@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
 export class SpotifyService {
   
   // sporify token updates every hour
-  tokenSpoti: string = "Bearer BQDlMMzlfdNbz7e7bBUCnBD-qnBpgSoCRT8aeCVpzlnw_kbqIgA1BdMRrp0tXztkPZRo63d_UEC1_4NIEn4";
+  tokenSpoti: string = "Bearer BQD0FhAMfj4DJF00rgobUxk05Vy6AWhYpRZMagnJq8RmUWD5xVfH8CiI-G4M7LRw1KIqArwL9uBaG-onfHE";
   constructor(private http: HttpClient) {
     console.log("spoty service ready ! .. ");
   }
@@ -24,11 +24,13 @@ export class SpotifyService {
     getNewReleases() {          
       //observable
       return  this.getQuery( "browse/new-releases?limit=10")
-      .pipe(map (data => data['albums'].items ));             
+      .pipe(map (data => data['albums'].items )); 
+
+
     }
 
-    getArtists( term: string){ 
-  
+    getArtists( term: string){
+
           //observable
           return this.getQuery(`search?q=${term}&type=artist`)
           .pipe( map( data => data['artists'].items ));
@@ -44,4 +46,18 @@ export class SpotifyService {
         // .pipe( map( data => data['artists'].items ));
             
    }
-}
+
+   getTopTracks( id: string){ 
+
+        //observable
+        return this.getQuery(`artists/${id}/top-tracks?country=us`)
+        .pipe( map( data => data['tracks']));
+            
+   }
+
+
+
+
+
+
+}// End Class

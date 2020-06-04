@@ -13,7 +13,7 @@ loading : boolean = true;
 
   constructor(private spotify: SpotifyService) {
     this.spotify.getNewReleases().subscribe((data:any) => {
-      console.log(data);
+     // console.log(data);
 
       this.newReleases = data;
       this.loading = false;
